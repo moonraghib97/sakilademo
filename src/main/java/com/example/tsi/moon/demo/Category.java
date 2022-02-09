@@ -1,26 +1,27 @@
 package com.example.tsi.moon.demo;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Language {
+public class Category {
 
     @Id
     @GeneratedValue
-    private int language_id;
+    private int category_id;
     private String name;
 
-    public Language(String name){
+    public Category(String name){
         this.name = name;
+
     }
 
-    public Language(){
+    public Category(){
+
     }
 
-    public int getLanguage_id() {
-        return language_id;
+    public int getCategory_id() {
+        return category_id;
     }
 
     public String getName() {
@@ -31,4 +32,3 @@ public class Language {
         this.name = name;
     }
 }
-
