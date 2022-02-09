@@ -3,7 +3,10 @@ package com.example.tsi.moon.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.PrimitiveIterator;
 
 @SpringBootApplication
 @RestController
@@ -22,6 +25,7 @@ public class MoonsakilaApplication {
 	@Autowired
 	private FilmRepository filmRepository;
 	@Autowired CityRepository cityRepository;
+	private String save = "save";
 
 	public MoonsakilaApplication(LanguageRepository languageRepository, ActorRepository actorRepository, CategoryRepository categoryRepository,
 								 InventoryRepository inventoryRepository, FilmRepository filmRepository, CityRepository cityRepository){
@@ -37,31 +41,66 @@ public class MoonsakilaApplication {
 		SpringApplication.run(MoonsakilaApplication.class, args);
 
 	}
+	@PostMapping("/AddLanguages")
+	public @ResponseBody
+	String addLanguage(@RequestParam String name) {
+		Language addLanguage = new Language(name);
+		languageRepository.save(addLanguage);
+		return save;
+	}
 	@GetMapping("/AllLanguages")
 	public @ResponseBody
 	Iterable <Language> getAllLanguages(){
 		return languageRepository.findAll();
+	}
+
+
+
+	@PostMapping("/AddActors")
+	Actor createActors(@Validated @RequestBody Actor newActor) {
+		return actorRepository.save(newActor);
 	}
 	@GetMapping("/AllActors")
 	public @ResponseBody
 	Iterable <Actor> getAllActors(){
 		return actorRepository.findAll();
 	}
+
+
+
+	@PostMapping("/AddCategories")
+	Category createCategoies(@Validated @RequestBody Category newCategory){return categoryRepository.save(newCategory);}
 	@GetMapping("/AllCategories")
 	public @ResponseBody
 	Iterable <Category> getAllCategories(){
 		return categoryRepository.findAll();
 	}
+
+
+
+
+
 	@GetMapping("/AllInventory")
 	public @ResponseBody
 	Iterable <Inventory> getAllInventory(){
 		return inventoryRepository.findAll();
 	}
+
+
+
+
+
 	@GetMapping("/AllFilms")
 	public @ResponseBody
 	Iterable <Film> getAllFilms(){
 		return filmRepository.findAll();
 	}
+
+
+
+
+
+
 	@GetMapping("/AllCities")
 	public @ResponseBody
 	Iterable <City> getAllCities(){

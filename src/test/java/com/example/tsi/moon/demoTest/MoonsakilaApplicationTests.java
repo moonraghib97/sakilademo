@@ -1,4 +1,4 @@
-package com.example.tsi.moon.demo;
+package com.example.tsi.moon.demoTest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
