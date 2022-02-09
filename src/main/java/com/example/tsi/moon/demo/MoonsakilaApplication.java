@@ -57,8 +57,10 @@ public class MoonsakilaApplication {
 
 
 	@PostMapping("/AddActors")
-	Actor createActors(@Validated @RequestBody Actor newActor) {
-		return actorRepository.save(newActor);
+	public @ResponseBody
+	void addActors(@RequestParam String first_name, @RequestParam String last_name) {
+		Actor addActor = new Actor(first_name, last_name);
+		actorRepository.save(addActor);
 	}
 	@GetMapping("/AllActors")
 	public @ResponseBody

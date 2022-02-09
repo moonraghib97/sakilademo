@@ -1,10 +1,12 @@
 package com.example.tsi.moon.demo;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-
+@Table(name="film")
 public class Film {
     @Id
     @GeneratedValue
@@ -18,6 +20,18 @@ public class Film {
     private double replacement_cost;
     private String rating;
     private String special_features;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+
+    @JoinTable(name = "film_actor",
+            joinColumns = {
+                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
+                            nullable = false, updatable = false)})
+    @JsonIgnore
+    private Set<Actor> actor = new HashSet<>();
 
     public Film(String title, String description,int release_year,int rental_duration,double rental_rate,int length,double replacement_cost,String rating, String special_features){
         this.title=title;
