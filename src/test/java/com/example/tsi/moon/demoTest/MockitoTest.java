@@ -47,4 +47,26 @@ public class MockitoTest {
         languageArgumentCaptor.getValue();
         Assertions.assertEquals(expected, actual, "Data d=hasnt been added to mockDB");
     }
+
+    @Test
+    public void testAddActor(){
+        Actor saveActor = new Actor("Testfirst", "Testsecond");
+        String expected = "save";
+        String actual = moonsakilaApplication.addActor(saveActor.getFirst_name(),saveActor.getLast_name());
+        ArgumentCaptor<Actor> actorArgumentCaptor = ArgumentCaptor.forClass(Actor.class);
+        verify(actorRepository).save(actorArgumentCaptor.capture());
+        actorArgumentCaptor.getValue();
+        Assertions.assertEquals(expected,actual,"New data for actor has not been added to the mock DB");
+    }
+
+    @Test
+    public void testAddCategory(){
+        Category saveCategory = new Category("categoryTest");
+        String expected = "save";
+        String actual = moonsakilaApplication.addCategory(saveCategory.getName());
+        ArgumentCaptor<Category> categoryArgumentCaptor = ArgumentCaptor.forClass(Category.class);
+        verify(categoryRepository).save(categoryArgumentCaptor.capture());
+        categoryArgumentCaptor.getValue();
+        Assertions.assertEquals(expected, actual,"New data for category has not been added to the mock DB");
+    }
 }

@@ -44,11 +44,7 @@ public class MoonsakilaApplication {
 		SpringApplication.run(MoonsakilaApplication.class, args);
 	}
 
-	@GetMapping("/AllLanguages")
-	public @ResponseBody
-	Iterable<Language> getAllLanguages(){
-		return languageRepository.findAll();
-	}
+
 
 	@PostMapping("/AddLanguage")
 	public @ResponseBody String addLanguage(@RequestParam String name){
@@ -56,12 +52,14 @@ public class MoonsakilaApplication {
 		languageRepository.save(addLanguage);
 		return save;
 	}
-
-	@GetMapping("/AllActors")
+	@GetMapping("/AllLanguages")
 	public @ResponseBody
-	Iterable<Actor> getAllActors(){
-		return actorRepository.findAll();
+	Iterable<Language> getAllLanguages(){
+		return languageRepository.findAll();
 	}
+
+
+
 
 	@PostMapping("/AddActor")
 	public @ResponseBody String addActor(@RequestParam String first_name, @RequestParam String last_name){
@@ -69,13 +67,14 @@ public class MoonsakilaApplication {
 		actorRepository.save(addActor);
 		return save;
 	}
-
-
-	@GetMapping("/AllCategories")
+	@GetMapping("/AllActors")
 	public @ResponseBody
-	Iterable<Category> getAllCategories(){
-		return categoryRepository.findAll();
+	Iterable<Actor> getAllActors(){
+		return actorRepository.findAll();
 	}
+
+
+
 
 	@PostMapping("/AddCategory")
 	public @ResponseBody String addCategory(@RequestParam String name){
@@ -83,6 +82,14 @@ public class MoonsakilaApplication {
 		categoryRepository.save(addCategory);
 		return save;
 	}
+	@GetMapping("/AllCategories")
+	public @ResponseBody
+	Iterable<Category> getAllCategories(){
+		return categoryRepository.findAll();
+	}
+
+
+
 
 	@GetMapping("/AllCities")
 	public @ResponseBody
@@ -97,6 +104,4 @@ public class MoonsakilaApplication {
 	Iterable<Film> getAllFilms(){
 		return filmRepository.findAll();
 	}
-
-
 }
