@@ -1,12 +1,13 @@
 package com.example.tsi.moon.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Film {
+@Table(name = "film")
+public class Film implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int film_id;
@@ -14,6 +15,7 @@ public class Film {
     private String title;
     private String description;
     private int release_year;
+    private int language_id;
     private int rental_duration;
     private double rental_rate;
     private int length;
@@ -21,19 +23,39 @@ public class Film {
     private String rating;
     private String special_features;
 
-    public Film(String title, String description, int release_year, int rental_duration,
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_actor",
+            joinColumns = {
+                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
+                            nullable = false, updatable = false)})
+    private Set<Actor> actor = new HashSet<>();
+
+    public Film(String title, String description, int release_year, int language_id, int rental_duration,
                 double rental_rate, int length, double replacement_cost, String rating,
                 String special_features){
         this.title = title;
-        this.description=description;
-        this.release_year=release_year;
-        this.rental_duration=rental_duration;
-        this.rental_rate=rental_rate;
-        this.length=length;
-        this.replacement_cost=replacement_cost;
-        this.rating=rating;
-        this.special_features=special_features;
+        this.description = description;
+        this.release_year = release_year;
+        this.language_id = language_id;
+        this.rental_duration = rental_duration;
+        this.rental_rate = rental_rate;
+        this.length = length;
+        this.replacement_cost = replacement_cost;
+        this.rating = rating;
+        this.special_features = special_features;
 
+    }
+
+    public Set<Actor> getActor(){
+        return actor;
+    }
+
+    public void setActor(Set<Actor> actor){
+        this.actor = actor;
     }
 
     public Film(){
@@ -42,6 +64,18 @@ public class Film {
 
     public int getFilm_id() {
         return film_id;
+    }
+
+    public void setFilm_id(int film_id) {
+        this.film_id = film_id;
+    }
+
+    public int getLanguage_id() {
+        return language_id;
+    }
+
+    public void setLanguage_id(int language_id) {
+        this.language_id = language_id;
     }
 
     public String getTitle() {

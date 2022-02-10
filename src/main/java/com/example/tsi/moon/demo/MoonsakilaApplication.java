@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.PrimitiveIterator;
 
 @SpringBootApplication
@@ -61,6 +62,12 @@ public class MoonsakilaApplication {
 		return languageRepository.findAll();
 	}
 
+	@GetMapping("/GetLanguage/{language_id}")
+	public @ResponseBody
+	Optional<Language> getLanguageByID(@PathVariable int language_id){
+		return languageRepository.findById(language_id);
+	}
+
 
 
 
@@ -74,6 +81,11 @@ public class MoonsakilaApplication {
 	public @ResponseBody
 	Iterable<Actor> getAllActors(){
 		return actorRepository.findAll();
+	}
+	@GetMapping("/GetActors/{actor_id}")
+	public @ResponseBody
+	Optional<Actor> getActorByID(@PathVariable int actor_id){
+		return actorRepository.findById(actor_id);
 	}
 
 
@@ -94,13 +106,6 @@ public class MoonsakilaApplication {
 
 
 
-
-	@GetMapping("/AllReviews")
-	public @ResponseBody
-	Iterable<Review>getAllReview(){
-		return reviewRepository.findAll();
-	}
-
 	@PostMapping("/AddReviews")
 	public @ResponseBody
 	String addReviews(@RequestParam int film_film_id, String review){
@@ -108,6 +113,13 @@ public class MoonsakilaApplication {
 		reviewRepository.save(addReviews);
 		return save;
 	}
+	@GetMapping("/AllReviews")
+	public @ResponseBody
+	Iterable<Review>getAllReview(){
+		return reviewRepository.findAll();
+	}
+
+
 
 
 
@@ -119,7 +131,17 @@ public class MoonsakilaApplication {
 	}
 
 
+	@PostMapping("/addFilm")
+	public @ResponseBody String addFilm(@RequestParam String title, String description, int release_year, int language_id, int rental_duration,
+										double rental_rate, int length, double replacement_cost, String rating,
+										String special_features) {
 
+		Film addFilm = new Film(title, description, release_year, language_id, rental_duration, rental_rate, length,
+				replacement_cost, rating, special_features);
+
+		filmRepository.save(addFilm);
+		return save;
+	}
 	@GetMapping("/AllFilms")
 	public @ResponseBody
 	Iterable<Film> getAllFilms(){
