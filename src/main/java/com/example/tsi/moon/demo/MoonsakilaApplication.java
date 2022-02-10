@@ -25,19 +25,22 @@ public class MoonsakilaApplication {
 	private FilmRepository filmRepository;
 	@Autowired
 	private CityRepository cityRepository;
+	@Autowired
+	private ReviewRepository reviewRepository;
 
 	private String save = "save";
 
 	public MoonsakilaApplication(LanguageRepository languageRepository, ActorRepository actorRepository,
 								 CategoryRepository categoryRepository, InventoryRepository inventoryRepository,
 								 FilmRepository filmRepository,
-								 CityRepository cityRepository){
+								 CityRepository cityRepository, ReviewRepository reviewRepository){
 		this.languageRepository = languageRepository;
 		this.actorRepository = actorRepository;
 		this.categoryRepository = categoryRepository;
 		this.inventoryRepository = inventoryRepository;
 		this.filmRepository = filmRepository;
 		this.cityRepository = cityRepository;
+		this.reviewRepository=reviewRepository;
 	}
 
 	public static void main(String[] args) {
@@ -86,6 +89,23 @@ public class MoonsakilaApplication {
 	public @ResponseBody
 	Iterable<Category> getAllCategories(){
 		return categoryRepository.findAll();
+	}
+
+
+
+
+	@GetMapping("/AllReviews")
+	public @ResponseBody
+	Iterable<Review>getAllReview(){
+		return reviewRepository.findAll();
+	}
+
+	@PostMapping("/AddReviews")
+	public @ResponseBody
+	String addReviews(@RequestParam int film_film_id, String review){
+		Review addReviews=new Review(review, film_film_id);
+		reviewRepository.save(addReviews);
+		return save;
 	}
 
 
