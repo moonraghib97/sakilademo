@@ -14,27 +14,6 @@ class MoonsakilaApplicationTests {
     private Actor actor = new Actor();
     private Category category = new Category();
     private Inventory inventory = new Inventory();
-
-    @Test
-    public void test_getLanguage(){
-        language.setName("testname");
-        assertEquals("testname",language.getName());
-
-    }
-    @Test
-    public void test_getCategory(){
-        category.setName("testname");
-        assertEquals("testname", category.getName());
-    }
-
-
-    @Test
-    public void test_getCity(){
-        city.setCity("testcity");
-        assertEquals("testcity",city.getCity());
-
-    }
-
-
-
+    //@Test
+    // void
 }

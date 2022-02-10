@@ -40,7 +40,7 @@ public class MoonsakilaApplication {
 		this.inventoryRepository = inventoryRepository;
 		this.filmRepository = filmRepository;
 		this.cityRepository = cityRepository;
-		this.reviewRepository=reviewRepository;
+		this.reviewRepository = reviewRepository;
 	}
 
 	public static void main(String[] args) {
@@ -90,6 +90,7 @@ public class MoonsakilaApplication {
 	Iterable<Category> getAllCategories(){
 		return categoryRepository.findAll();
 	}
+
 
 
 

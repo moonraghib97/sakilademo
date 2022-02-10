@@ -31,10 +31,14 @@ public class MockitoTest {
     @Mock
     private CityRepository cityRepository;
 
+    @Mock
+    private ReviewRepository reviewRepository;
+
+
     @BeforeEach
     void Setup(){
-        moonsakilaApplication = new MoonsakilaApplication(languageRepository, actorRepository, categoryRepository,
-                inventoryRepository, filmRepository, cityRepository);
+        moonsakilaApplication = new MoonsakilaApplication(languageRepository, actorRepository,
+                categoryRepository, inventoryRepository, filmRepository, cityRepository, reviewRepository);
     }
 
     @Test
