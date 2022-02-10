@@ -11,13 +11,15 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int language_id;
+
     private String name;
 
     public Language(String name){
-        this.name = name;
+        this.name=name;
     }
 
     public Language(){
+
     }
 
     public int getLanguage_id() {
@@ -32,4 +34,3 @@ public class Language {
         this.name = name;
     }
 }
-

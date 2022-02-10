@@ -1,16 +1,16 @@
 package com.example.tsi.moon.demo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name="film")
 public class Film {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int film_id;
+
     private String title;
     private String description;
     private int release_year;
@@ -21,20 +21,10 @@ public class Film {
     private String rating;
     private String special_features;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-
-    @JoinTable(name = "film_actor",
-            joinColumns = {
-                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
-                            nullable = false, updatable = false)})
-    @JsonIgnore
-    private Set<Actor> actor = new HashSet<>();
-
-    public Film(String title, String description,int release_year,int rental_duration,double rental_rate,int length,double replacement_cost,String rating, String special_features){
-        this.title=title;
+    public Film(String title, String description, int release_year, int rental_duration,
+                double rental_rate, int length, double replacement_cost, String rating,
+                String special_features){
+        this.title = title;
         this.description=description;
         this.release_year=release_year;
         this.rental_duration=rental_duration;
@@ -47,11 +37,13 @@ public class Film {
     }
 
     public Film(){
+
     }
 
     public int getFilm_id() {
         return film_id;
     }
+
     public String getTitle() {
         return title;
     }
@@ -123,5 +115,4 @@ public class Film {
     public void setSpecial_features(String special_features) {
         this.special_features = special_features;
     }
-
 }
