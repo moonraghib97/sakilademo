@@ -56,7 +56,7 @@ public class MoonsakilaApplication {
 		languageRepository.save(addLanguage);
 		return save;
 	}
-	@GetMapping("/AllLanguages")
+	@GetMapping("/AllLanguage")
 	public @ResponseBody
 	Iterable<Language> getAllLanguages(){
 		return languageRepository.findAll();
@@ -77,7 +77,7 @@ public class MoonsakilaApplication {
 		actorRepository.save(addActor);
 		return save;
 	}
-	@GetMapping("/AllActors")
+	@GetMapping("/AllActor")
 	public @ResponseBody
 	Iterable<Actor> getAllActors(){
 		return actorRepository.findAll();
@@ -97,7 +97,7 @@ public class MoonsakilaApplication {
 		categoryRepository.save(addCategory);
 		return save;
 	}
-	@GetMapping("/AllCategories")
+	@GetMapping("/AllCategory")
 	public @ResponseBody
 	Iterable<Category> getAllCategories(){
 		return categoryRepository.findAll();
@@ -106,14 +106,14 @@ public class MoonsakilaApplication {
 
 
 
-	@PostMapping("/AddReviews")
+	@PostMapping("/AddReview")
 	public @ResponseBody
 	String addReviews(@RequestParam int film_film_id, String review){
 		Review addReviews=new Review(film_film_id, review);
 		reviewRepository.save(addReviews);
 		return save;
 	}
-	@GetMapping("/AllReviews")
+	@GetMapping("/AllReview")
 	public @ResponseBody
 	Iterable<Review>getAllReview(){
 		return reviewRepository.findAll();
@@ -135,7 +135,7 @@ public class MoonsakilaApplication {
 		filmRepository.save(addFilm);
 		return save;
 	}
-	@GetMapping("/AllFilms")
+	@GetMapping("/AllFilm")
 	public @ResponseBody
 	Iterable<Film> getAllFilms(){
 		return filmRepository.findAll();
