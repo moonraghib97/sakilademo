@@ -109,7 +109,7 @@ public class MoonsakilaApplication {
 	@PostMapping("/AddReviews")
 	public @ResponseBody
 	String addReviews(@RequestParam int film_film_id, String review){
-		Review addReviews=new Review(review, film_film_id);
+		Review addReviews=new Review(film_film_id, review);
 		reviewRepository.save(addReviews);
 		return save;
 	}
