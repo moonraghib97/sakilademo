@@ -124,13 +124,6 @@ public class MoonsakilaApplication {
 
 
 
-	@GetMapping("/AllCities")
-	public @ResponseBody
-	Iterable<City> getAllCities(){
-		return cityRepository.findAll();
-	}
-
-
 	@PostMapping("/addFilm")
 	public @ResponseBody String addFilm(@RequestParam String title, String description, int release_year, int language_id, int rental_duration,
 										double rental_rate, int length, double replacement_cost, String rating,
@@ -147,4 +140,38 @@ public class MoonsakilaApplication {
 	Iterable<Film> getAllFilms(){
 		return filmRepository.findAll();
 	}
+
+
+
+
+	@PostMapping("/AddInventory")
+	public @ResponseBody
+	String addInventory(@RequestParam int inventory_id, int film_id, int store_id){
+		Inventory addInventory = new Inventory(inventory_id, film_id, store_id);
+		inventoryRepository.save(addInventory);
+		return save;
+	}
+	@GetMapping("/AllInventory")
+	public @ResponseBody
+	Iterable<Inventory>getAllInventory(){
+		return inventoryRepository.findAll();
+	}
+
+
+
+
+
+	@PostMapping("/AddCity")
+	public @ResponseBody
+	String addCity(@RequestParam String city){
+		City addCity = new City(city);
+		cityRepository.save(addCity);
+		return save;
+	}
+	@GetMapping("/AllCity")
+	public @ResponseBody
+	Iterable<City> getAllCities(){
+		return cityRepository.findAll();
+	}
+
 }

@@ -16,9 +16,9 @@ public class Review {
 
     public Review(){}
 
-    public Review(String review, int film_film_id){
-        this.film_film_id=film_film_id;
-        this.review=review;}
+    public Review(int film_film_id, String review){
+        this.film_film_id = film_film_id;
+        this.review = review;}
 
     public int getReview_id() {
         return review_id;

@@ -12,7 +12,15 @@ public class Inventory {
     private int film_id;
     private int store_id;
 
+    public Inventory(int inventory_id, int film_id, int store_id){
+        this.inventory_id = inventory_id;
+        this.film_id = film_id;
+        this.store_id = store_id;
+
+    }
+
     public Inventory(){
+
     }
 
     public int getInventory_id() {
