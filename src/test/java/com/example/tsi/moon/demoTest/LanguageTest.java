@@ -7,20 +7,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LanguageTest {
+    private Language languageTest = new Language("FakeLanguage");
 
     @Test
-    public void getNameTest() {
+    public void getName() {
+        assertEquals("FakeLanguage", languageTest.getName(), "Failed test");
     }
 
     @Test
-    public void setNameTest() {
+    public void setName() {
+        languageTest.setName("FakeNameTwo");
+        assertEquals("FakeNameTwo",languageTest.getName(),"Failed Test");
     }
 
     @Test
-    public void getLanguage_idTest() {
+    public void getLanguage_id() {
+        assertEquals(0,languageTest.getLanguage_id(),"Failed Test");
     }
 
     @Test
-    public void emptyConstructorTest() {
+    public void emptyConstructor() {
+        languageTest = new Language();
+        assertEquals(null, languageTest.getName(), "Failed Test");
     }
 }
