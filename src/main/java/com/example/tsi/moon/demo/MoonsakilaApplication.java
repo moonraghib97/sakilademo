@@ -1,18 +1,32 @@
 package com.example.tsi.moon.demo;
 
+import com.amazonaws.services.secretsmanager.AWSSecretsManager;
+import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
+import com.amazonaws.services.secretsmanager.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException;
 
+import java.security.InvalidParameterException;
+import java.util.Base64;
 import java.util.Optional;
 import java.util.PrimitiveIterator;
 
+
+
+
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @SpringBootApplication
 @RestController
 @RequestMapping("/Home")
+
 public class MoonsakilaApplication {
+
 
 	@Autowired
 	private LanguageRepository languageRepository;
