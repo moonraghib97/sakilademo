@@ -1,4 +1,4 @@
-import com.amazonaws.services.secretsmanager.AWSSecretsManager;
+/*import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
 import com.amazonaws.services.secretsmanager.model.*;
 
@@ -56,4 +56,4 @@ public class GetSecret {
 
     }
 
-}
+}*/
