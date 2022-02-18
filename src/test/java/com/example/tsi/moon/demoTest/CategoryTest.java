@@ -7,29 +7,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CategoryTest {
-    private Category categoryTest = new Category("FakeName");
+    @Test
+    public void testName() {
 
+        Category testName = new Category();
+        testName.setName("Horror");
+        assertEquals("Horror", testName.getName(), "Incorrect name!");
+    }
+
+
+    private Category category = new Category();
 
     @Test
-    void getCategory_id() {
-        assertEquals(0, categoryTest.getCategory_id(), "Failed test");
+    public void test_constructor() {
+        assertTrue(category instanceof Category, "Not an instance of Category");
     }
 
     @Test
-    void getName() {
-        assertEquals("FakeName", categoryTest.getName(), "Incorrect first name, Failed test.");
-
-    }
-
-    @Test
-    void setName() {
-        categoryTest.setName("Moon");
-        assertEquals("Moon", categoryTest.getName(), "Test failed");
-
-    }
-
-    @Test
-    public void test_constructor(){
-        assertTrue(categoryTest instanceof Category, "Not an instance of Category");
+    public void testGetCategory_id(){
+        assertEquals(0, category.getCategory_id(), "Category id getting failed");
     }
 }
