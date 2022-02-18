@@ -23,7 +23,8 @@ class CategoryTest {
 
     @Test
     void setName() {
-        assertEquals("FakeName", categoryTest.getName(), "Test failed");
+        categoryTest.setName("Moon");
+        assertEquals("Moon", categoryTest.getName(), "Test failed");
 
     }
 
