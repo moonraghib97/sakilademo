@@ -153,6 +153,11 @@ class FilmTest {
         testActorSet.add(new Actor("FakeOne","FakeTwo"));
         filmTest.setActor(testActorSet);
         assertEquals(testActorSet, filmTest.getActor(),"Failed Test");
+    }
 
+
+    @Test
+    public void test_constructor(){
+        assertTrue(filmTest instanceof Film, "Not an instance of Film");
     }
 }

@@ -30,4 +30,9 @@ class CityTest {
         assertEquals("FakeCityName", cityTest.getCity(), "Incorrect first name, Failed test.");
 
     }
+
+    @Test
+    public void test_constructor(){
+        assertTrue(cityTest instanceof City, "Not an instance of City");
+    }
 }

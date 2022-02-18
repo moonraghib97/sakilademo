@@ -30,4 +30,9 @@ public class LanguageTest {
         languageTest = new Language();
         assertEquals(null, languageTest.getName(), "Failed Test");
     }
+
+    @Test
+    public void test_constructor(){
+        assertTrue(languageTest instanceof Language, "Not an instance of Language");
+    }
 }

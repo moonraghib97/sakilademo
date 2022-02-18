@@ -1,5 +1,6 @@
 package com.example.tsi.moon.demoTest;
 
+import com.example.tsi.moon.demo.Film;
 import com.example.tsi.moon.demo.Inventory;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +34,10 @@ class InventoryTest {
     void setStore_id() {
         inventoryTest.setStore_id(10);
         assertEquals(10,inventoryTest.getStore_id(),"Failed Test");
+    }
+
+    @Test
+    public void test_constructor(){
+        assertTrue(inventoryTest instanceof Inventory, "Not an instance of Inventory");
     }
 }

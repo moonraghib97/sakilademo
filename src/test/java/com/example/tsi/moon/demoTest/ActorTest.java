@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ActorTest {
     private Actor actorTest = new Actor("Fake", "FakeLastName");
@@ -54,5 +55,10 @@ public class ActorTest {
                 22.55, 1, 50.50, "Test rating", "Test special features"));
         actorTest.setFilms(testFilmSet);
         assertEquals(testFilmSet, actorTest.getFilms(),"This test has failed");
+    }
+
+    @Test
+    public void test_constructor(){
+        assertTrue(actorTest instanceof Actor, "Not an instance of Actor");
     }
 }

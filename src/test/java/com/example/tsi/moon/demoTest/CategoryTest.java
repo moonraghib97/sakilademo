@@ -26,4 +26,9 @@ class CategoryTest {
         assertEquals("FakeName", categoryTest.getName(), "Test failed");
 
     }
+
+    @Test
+    public void test_constructor(){
+        assertTrue(categoryTest instanceof Category, "Not an instance of Category");
+    }
 }
