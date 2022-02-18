@@ -27,14 +27,11 @@ public class Actor implements Serializable {
     }
 
     public Actor(){
-
     }
+
 
     public int getActor_id() {
         return actor_id;
-    }
-    public void setActor_id(int actor_id) {
-        this.actor_id = actor_id;
     }
 
 

@@ -16,7 +16,7 @@ public class ActorTest {
     private Set<Film> testFilm = new HashSet<>();
 
     @Test
-    public void testGetActorId(){
+    public void tGetActorId(){
         assertEquals(0, actorTest.getActor_id(), "Failed test");
     }
 
