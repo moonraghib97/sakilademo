@@ -1,9 +1,8 @@
 package com.example.tsi.moon.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Review {
@@ -14,11 +13,22 @@ public class Review {
     private int film_film_id;
     private String review;
 
-    public Review(){}
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn (name = "film_id", referencedColumnName = "film_id", updatable = false, insertable = false)
+    private Film film;
+
 
     public Review(int film_film_id, String review){
+
         this.film_film_id = film_film_id;
-        this.review = review;}
+        this.review = review;
+    }
+
+    public Review(){
+
+    }
+
 
     public int getReview_id() {
         return review_id;
